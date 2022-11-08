@@ -33,7 +33,7 @@ export default function Register({ setUserData, userData }) {
     formState: { errors },
   } = useForm()
   const onSubmit = (inputRegister) => {
-    const randomUserName = UsernameGenerator.generateUsername('_')
+    const randomUserName = UsernameGenerator.generateUsername('_',6)
     console.log(randomUserName)
     console.log(inputRegister)
 
@@ -41,14 +41,27 @@ export default function Register({ setUserData, userData }) {
       setErrorUserName(<p>This name already exist</p>)
     } else if (inputRegister.userName === '') {
       inputRegister.userName = randomUserName
-    } else if (inputRegister.password !== inputRegister.passwordConfirm) {
-      setErrorPasswordConfirm(<p>Password not matched</p>)
-    } else {
-      setUserData([inputRegister])
-      setTimeout(() => {
-        navigate('/')
-      }, 300)
+      if (inputRegister.password !== inputRegister.passwordConfirm) {
+        setErrorPasswordConfirm(<p>Password not matched</p>)
+      } else {
+        setUserData([inputRegister])
+        setTimeout(() => {
+          navigate('/')
+        }, 300)
+      }
+    } else{
+      if (inputRegister.password !== inputRegister.passwordConfirm) {
+        setErrorPasswordConfirm(<p>Password not matched</p>)
+      } else {
+        setUserData([inputRegister])
+        setTimeout(() => {
+          navigate('/')
+        }, 300)
+      }
     }
+    
+    
+ 
   }
 
   return (

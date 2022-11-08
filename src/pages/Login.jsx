@@ -43,7 +43,7 @@ export default function Login({ setIsLogin, setIsLoading }) {
         navigate('/about')
       }, 1000)
     } else {
-      setMessage(<p style={{ color: 'red' }}>Email or Eassword false!</p>)
+      setMessage(<p style={{ color: 'red' }}>Email or Password false!</p>)
     }
   }
 

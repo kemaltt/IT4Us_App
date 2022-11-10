@@ -119,7 +119,6 @@ export default function Home({ isLogin, isLoading, userData }) {
                       fullWidth
                       id="boardName"
                       label="BOARD NAME"
-                      autoFocus
                       color="warning"
                       {...register('boardName', {
                         required: true,

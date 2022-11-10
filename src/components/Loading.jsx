@@ -10,7 +10,7 @@ export default function Loading() {
         fontSize: '2rem',
       }}
     >
-      <div class="spinner-grow text-primary" role="status">
+      <div class="spinner-grow text-warning" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>

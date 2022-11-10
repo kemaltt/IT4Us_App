@@ -129,7 +129,9 @@ h2 {
 .privacy_policy,
 .about,
 .contact,
-.register {
+.register,
+.forgot_password,
+.home_page {
   padding: 2vh 4%;
   text-align: center;
 }

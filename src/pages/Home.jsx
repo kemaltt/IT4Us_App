@@ -1,33 +1,146 @@
 import React from 'react'
-// import css from '../css/Home.css'
-import Navbar from '../components/Navbar'
-// import { useNavigate } from 'react-router-dom'
 import Loading from '../components/Loading'
-// import Login from '../components/Login'
-import Copyright from '../components/Copyright'
-import Login from '../pages/Login'
-export default function Home({ isLogin, setIsLogin, loading, setLoading }) {
-  // const navigate = useNavigate()
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+
+const theme = createTheme()
+
+export default function Home({ isLogin, isLoading, userData }) {
+  const navigate = useNavigate()
+  const userName = userData[0].userName
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (inputLogin) => {}
+
   return (
-    <>
-      <Navbar
-        isLogin={isLogin}
-        setIsLogin={setIsLogin}
-        setLoading={setLoading}
-      />
-      {loading ? (
+    <div className="home_page">
+      {/* <Navbar /> */}
+      <div className="nav_pages">
+        <div onClick={() => navigate('/')} className="logo">
+          {/* <img src="trello.png" alt="logo" /> */}
+          <h4>T4US</h4>
+          <h2>TODO</h2>
+        </div>
+
+        <div>
+          <Avatar
+            sx={{
+              m: 0.7,
+              bgcolor: 'secondary.main',
+              // fontSize: '10px',
+            }}
+          ></Avatar>
+          <p style={{ color: 'white' }}>{userName}</p>
+        </div>
+      </div>
+      {isLoading ? (
         <Loading />
       ) : (
-        <div className="main">
-          <img
-            src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=739&q=80"
-            alt=""
-          />
+        <>
+          <div className="home">
+            <ThemeProvider theme={theme}>
+              <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    borderRadius: '10px',
+                    padding: '1rem',
+                    color: 'white',
+                  }}
+                >
+                  <Typography
+                    sx={{ marginBottom: 2 }}
+                    component="h1"
+                    variant="h5"
+                  >
+                    Welcome TODO
+                  </Typography>
+                  <Box
+                    component="form"
+                    // onSubmit={handleSubmit}
+                    onSubmit={handleSubmit(onSubmit)}
+                    noValidate
+                    sx={{
+                      borderRadius: '20px',
+                      backgroundColor: 'rgba(236, 222, 222, 0.637)',
+                      padding: '10px',
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        textAlign: 'center',
+                        pt: 2,
+                        fontSize: '16px',
+                        color: 'black',
+                      }}
+                      component="h1"
+                    >
+                      Firstly create a Workspace and a Board than start add your
+                      POST-IT
+                    </Typography>
+                    <TextField
+                      margin="normal"
+                      autoComplete="given-name"
+                      name="workSpaceName"
+                      required
+                      fullWidth
+                      id="workSpaceName"
+                      label="WORKSPACE NAME"
+                      autoFocus
+                      color="warning"
+                      {...register('workSpaceName', {
+                        required: true,
+                      })}
+                    />
 
-          <Login />
-        </div>
+                    {errors.password && <p>Please enter a valid password</p>}
+                    <TextField
+                      margin="normal"
+                      autoComplete="given-name"
+                      name="boardName"
+                      required
+                      fullWidth
+                      id="boardName"
+                      label="BOARD NAME"
+                      autoFocus
+                      color="warning"
+                      {...register('boardName', {
+                        required: true,
+                      })}
+                    />
+
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      sx={{ mt: 2, mb: 2, pl: 5, pr: 5 }}
+                    >
+                      CREATE
+                    </Button>
+                  </Box>
+                </Box>
+              </Container>
+            </ThemeProvider>
+          </div>
+        </>
       )}
-      <Copyright className="footer" />
-    </>
+    </div>
   )
 }

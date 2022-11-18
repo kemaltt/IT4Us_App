@@ -112,9 +112,9 @@ export default function Register({ setUserData, userData }) {
                       required: false,
                       minLength: 4,
                       maxLength: 15,
-                      // pattern: {
-                      //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,15}$/,
-                      // },
+                      pattern: {
+                        value: /^(?=)(?=).{4,15}$/,
+                      },
                     })}
                   />
                 </Grid>

@@ -119,7 +119,7 @@ h2 {
 
 
 .register p,
-.login p {
+.login p,.forgot_password p ,.create_new_pass p{
   color: tomato;
   margin-bottom: 2px;
   font-size: 14px;
@@ -131,7 +131,8 @@ h2 {
 .contact,
 .register,
 .forgot_password,
-.home_page {
+.home_page ,
+.create_new_pass{
   padding: 2vh 4%;
   text-align: center;
 }

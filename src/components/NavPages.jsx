@@ -12,7 +12,7 @@ export default function NavPages() {
         <h2>TODO</h2>
       </div>
 
-      <Button onClick={() => navigate('/')} variant="contained" color="warning">
+      <Button onClick={() => navigate(-1)} variant="contained" color="warning">
         Back
       </Button>
     </div>

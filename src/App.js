@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Home from './pages/Home';
 import ForgotPassword from './pages/ForgotPassword';
+import CreateNewPass from './pages/CreateNewPass';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword isLogin={isLogin} />} />
           <Route path='/home' element={<Home setIsLogin={setIsLogin} isLogin={isLogin} isLoading={isLoading} setIsLoading={setIsLoading} userData={userData} />} />
           <Route path='/register' element={<Register setUserData={setUserData} userData={userData} />} />
+          <Route path='/createnewpass' element={<CreateNewPass/>}/>
 
         </Routes>
 

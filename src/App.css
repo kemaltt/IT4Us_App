@@ -111,7 +111,8 @@ h2 {
 .register p,
 .login p,
 .forgot_password p,
-.create_new_pass p {
+.create_new_pass p,
+.home p {
   color: tomato;
   margin-bottom: 2px;
   font-size: 14px;
@@ -275,10 +276,12 @@ h2 {
     padding: 2vh 4%;
   }
   .work_space {
-    height: 100vh;
+    height: auto;
     display: flex;
-    justify-content: center;
-    gap: 1px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
     padding: 20px;
   }
   .work_space_card {

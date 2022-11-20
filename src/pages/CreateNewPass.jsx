@@ -62,7 +62,7 @@ setUserData([userInfo])
               margin:'6vh 0',
             }}
           >
-            <Typography sx={{ color: 'white' }} component="h1" variant="h5">
+            <Typography sx={{ color: 'white' }} component="h3" variant="h5">
          <h3>Create new </h3>
               <h3>Password</h3>
 

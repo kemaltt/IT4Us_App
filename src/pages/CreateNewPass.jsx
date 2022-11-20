@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 
 import NavPages from '../components/NavPages'
 import { useForm } from 'react-hook-form'
@@ -15,11 +15,17 @@ import { useForm } from 'react-hook-form'
 
 const theme = createTheme()
 
-export default function CreateNewPass() {
+export default function CreateNewPass({userData,setUserData}) {
 
     const [errorPasswordConfirm, setErrorPasswordConfirm] = useState('')
     const navigate = useNavigate()
+    const location=useLocation()
+    const userEmail=location.state.inputEmail
+    console.log(userEmail);
+    console.log(userData);
 
+const userInfo=userData.find((el)=> el.email===userEmail.email)
+console.log(userInfo)
     const {
       register,
       handleSubmit,
@@ -32,7 +38,10 @@ export default function CreateNewPass() {
         setErrorPasswordConfirm(<p>Password not matched</p>)
       }else{
         setErrorPasswordConfirm(<p style={{ color:'yellowgreen'}} >successful</p>)
-        setTimeout(()=>{
+userInfo.password=inputNewPassword.password
+userInfo.passwordConfirm=inputNewPassword.passwordConfirm
+setUserData([userInfo])
+       setTimeout(()=>{
             navigate('/')
         },1000)
       }

@@ -20,11 +20,12 @@ function App() {
   const [userData, setUserData] = useState([
     {
       userName: 'test',
-      email: '',
+      email: 'test@gmail.com',
       password: '',
       passwordConfirm: ''
     }
   ])
+  
   localStorage.setItem('userData', JSON.stringify(userData))
 
 
@@ -39,7 +40,7 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword isLogin={isLogin} />} />
           <Route path='/home' element={<Home setIsLogin={setIsLogin} isLogin={isLogin} isLoading={isLoading} setIsLoading={setIsLoading} userData={userData} />} />
           <Route path='/register' element={<Register setUserData={setUserData} userData={userData} />} />
-          <Route path='/createnewpass' element={<CreateNewPass/>}/>
+          <Route path='/createnewpass' element={<CreateNewPass setUserData={setUserData} userData={userData}/>}/>
 
         </Routes>
 

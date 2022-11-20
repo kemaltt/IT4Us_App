@@ -23,10 +23,10 @@ export default function ForgotPassword() {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (inputPassword) => {
+  const onSubmit = (inputEmail) => {
 
-    console.log(inputPassword);
-    navigate('/createnewpass')
+    console.log(inputEmail);
+    navigate('/createnewpass',{state:{inputEmail }})
   }
   return (
     <div className="forgot_password">

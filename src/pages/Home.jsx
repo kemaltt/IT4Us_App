@@ -13,7 +13,7 @@ import { useForm } from 'react-hook-form'
 
 const theme = createTheme()
 
-export default function Home({ isLogin, isLoading, userData }) {
+export default function Home({ isLogin, isLoading,userData}) {
   const navigate = useNavigate()
   const userName = userData[0].userName
 

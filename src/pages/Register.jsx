@@ -2,12 +2,8 @@ import React, { useState } from 'react'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-// import FormControlLabel from '@mui/material/FormControlLabel'
-// import Checkbox from '@mui/material/Checkbox'
-// import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
@@ -19,7 +15,20 @@ import UsernameGenerator from 'username-generator'
 
 const theme = createTheme()
 
-export default function Register({ setUserData, userData }) {
+export default function Register({userData,setUserData}) {
+
+  // const [userData, setUserData] = useState([
+  //   {
+  //     userName: 'test',
+  //     email: '',
+  //     password: '',
+  //     passwordConfirm: ''
+  //   }
+  // ])
+  
+  // localStorage.setItem('userData', JSON.stringify(userData))
+
+
   // const [errorEmail, setErrorEmail] = useState('')
   // const [errorPassword, setErrorPassword] = useState('')
   const [errorUserName, setErrorUserName] = useState('')

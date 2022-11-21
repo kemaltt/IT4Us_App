@@ -165,17 +165,19 @@ h2 {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
+  gap: 40px;
+  padding: 40px;
 }
 .work_space_card {
   width: 200px;
   height: 200px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   cursor: pointer;
+  transform: rotate(345deg);
+  box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.75);
 }
 .work_space_card h3 {
-  line-height: 200px;
+  line-height: 170px;
   color: #fff;
 }
 
@@ -281,13 +283,13 @@ h2 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     padding: 20px;
   }
   .work_space_card {
     width: 200px;
     height: 150px;
-    border-radius: 20px;
+
     cursor: pointer;
   }
   .work_space_card h3 {

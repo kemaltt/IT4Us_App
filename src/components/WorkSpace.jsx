@@ -11,7 +11,7 @@ export default function WorkSpace({ workSpace, setToggle }) {
       {workSpace.map((el, i) => (
         <div
           key={i}
-          style={{ background: i % 2 === 1 ? "#c16ecf" : "#0e76ec" }}
+          style={{ background: i % 2 === 1 ? "#ebb328" : "#04e022" }}
           className="work_space_card"
         >
           <CgAttachment style={{ fontSize: "1.5rem" }} />

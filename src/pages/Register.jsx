@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
-import TextField from '@mui/material/TextField'
-import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import NavPages from '../components/NavPages'
-import { useForm } from 'react-hook-form'
-import UsernameGenerator from 'username-generator'
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import NavPages from "../components/NavPages";
+import { useForm } from "react-hook-form";
+import UsernameGenerator from "username-generator";
 
-const theme = createTheme()
+const theme = createTheme();
 
-export default function Register({userData,setUserData}) {
-
+export default function Register({ userData, setUserData }) {
   // const [userData, setUserData] = useState([
   //   {
   //     userName: 'test',
@@ -25,50 +24,50 @@ export default function Register({userData,setUserData}) {
   //     passwordConfirm: ''
   //   }
   // ])
-  
-  // localStorage.setItem('userData', JSON.stringify(userData))
 
+  // localStorage.setItem('userData', JSON.stringify(userData))
 
   // const [errorEmail, setErrorEmail] = useState('')
   // const [errorPassword, setErrorPassword] = useState('')
-  const [errorUserName, setErrorUserName] = useState('')
-  const [errorPasswordConfirm, setErrorPasswordConfirm] = useState('')
-  const navigate = useNavigate()
-  console.log(userData)
+  const [errorUserName, setErrorUserName] = useState("");
+  const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
+  const navigate = useNavigate();
+  console.log(userData);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm();
   const onSubmit = (inputRegister) => {
-    const randomUserName = UsernameGenerator.generateUsername('_', 6)
-    console.log(randomUserName)
-    console.log(inputRegister)
+    const randomUserName = UsernameGenerator.generateUsername("_", 6);
+    console.log(randomUserName);
+    console.log(inputRegister);
 
     if (userData[0].userName === inputRegister.userName) {
-      setErrorUserName(<p>This name already exist</p>)
-    } else if (inputRegister.userName === '') {
-      inputRegister.userName = randomUserName
+      setErrorUserName(<p>This name already exist</p>);
+    } else if (inputRegister.userName === "") {
+      inputRegister.userName = randomUserName;
+      setErrorUserName("");
       if (inputRegister.password !== inputRegister.passwordConfirm) {
-        setErrorPasswordConfirm(<p>Password not matched</p>)
+        setErrorPasswordConfirm(<p>Password not matched</p>);
       } else {
-        setUserData([inputRegister])
+        setUserData([inputRegister]);
         setTimeout(() => {
-          navigate('/')
-        }, 300)
+          navigate("/");
+        }, 300);
       }
     } else {
       if (inputRegister.password !== inputRegister.passwordConfirm) {
-        setErrorPasswordConfirm(<p>Password not matched</p>)
+        setErrorPasswordConfirm(<p>Password not matched</p>);
       } else {
-        setUserData([inputRegister])
+        setUserData([inputRegister]);
         setTimeout(() => {
-          navigate('/')
-        }, 300)
+          navigate("/");
+        }, 300);
       }
     }
-  }
+  };
 
   return (
     <div className="register">
@@ -80,17 +79,17 @@ export default function Register({userData,setUserData}) {
           <Box
             sx={{
               marginTop: 3,
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            <Typography sx={{ color: 'white' }} component="h1" variant="h5">
+            <Typography sx={{ color: "white" }} component="h1" variant="h5">
               Create new Account
             </Typography>
 
             <Grid item sx={{ m: 1 }}>
               <Link
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: "none", color: "white" }}
                 to="/"
                 variant="body2"
               >
@@ -117,7 +116,7 @@ export default function Register({userData,setUserData}) {
                     label="USERNAME"
                     autoFocus
                     color="warning"
-                    {...register('userName', {
+                    {...register("userName", {
                       required: false,
                       minLength: 4,
                       maxLength: 15,
@@ -139,7 +138,7 @@ export default function Register({userData,setUserData}) {
                     name="email"
                     autoComplete="email"
                     color="warning"
-                    {...register('email', {
+                    {...register("email", {
                       required: true,
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,15}$/i,
@@ -159,7 +158,7 @@ export default function Register({userData,setUserData}) {
                     id="password"
                     autoComplete="new-password"
                     color="warning"
-                    {...register('password', {
+                    {...register("password", {
                       required: true,
                       pattern: {
                         value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/,
@@ -181,7 +180,7 @@ export default function Register({userData,setUserData}) {
                     id="passwordconfirm"
                     autoComplete="new-password"
                     color="warning"
-                    {...register('passwordConfirm', {
+                    {...register("passwordConfirm", {
                       required: true,
                     })}
                   />
@@ -201,7 +200,7 @@ export default function Register({userData,setUserData}) {
         </Container>
       </ThemeProvider>
     </div>
-  )
+  );
 }
 
 // const isEmail = (email) =>

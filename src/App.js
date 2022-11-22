@@ -53,17 +53,21 @@ function App() {
           <Route
             path="/home"
             element={
-              <Home
-                setIsLogin={setIsLogin}
-                isLogin={isLogin}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
-                userData={userData}
-                workSpace={workSpace}
-                setWorkSpace={setWorkSpace}
-                toggle={toggle}
-                setToggle={setToggle}
-              />
+              isLogin ? (
+                <Home
+                  setIsLogin={setIsLogin}
+                  isLogin={isLogin}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                  userData={userData}
+                  workSpace={workSpace}
+                  setWorkSpace={setWorkSpace}
+                  toggle={toggle}
+                  setToggle={setToggle}
+                />
+              ) : (
+                <Login />
+              )
             }
           />
           <Route

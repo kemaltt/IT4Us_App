@@ -24,14 +24,15 @@ export default function Home({
   toggle,
   setToggle,
 }) {
+  const [message, setMesaage] = useState("");
   const navigate = useNavigate();
   const userName = userData[0].userName;
-  const [message, setMesaage] = useState("");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (inputWorkSpace) => {
@@ -43,10 +44,12 @@ export default function Home({
       setMesaage(<p>This name already exist</p>);
     } else {
       setWorkSpace([...workSpace, inputWorkSpace]);
-      register(" ");
+      setMesaage("");
       setToggle(!toggle);
+      reset();
     }
   };
+
   console.log(workSpace);
   console.log(toggle);
   return (

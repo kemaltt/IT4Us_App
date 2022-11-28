@@ -16,19 +16,6 @@ import UsernameGenerator from "username-generator";
 const theme = createTheme();
 
 export default function Register({ userData, setUserData }) {
-  // const [userData, setUserData] = useState([
-  //   {
-  //     userName: 'test',
-  //     email: '',
-  //     password: '',
-  //     passwordConfirm: ''
-  //   }
-  // ])
-
-  // localStorage.setItem('userData', JSON.stringify(userData))
-
-  // const [errorEmail, setErrorEmail] = useState('')
-  // const [errorPassword, setErrorPassword] = useState('')
   const [errorUserName, setErrorUserName] = useState("");
   const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
   const navigate = useNavigate();
@@ -44,6 +31,17 @@ export default function Register({ userData, setUserData }) {
     console.log(randomUserName);
     console.log(inputRegister);
 
+    // fetch(`http://localhost:8080/api/signup`, {
+    //   method: "POST",
+
+    //   userName: null,
+    //   email: "test2@email.com",
+    //   password: "12345678",
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //   });
     if (userData[0].userName === inputRegister.userName) {
       setErrorUserName(<p>This name already exist</p>);
     } else if (inputRegister.userName === "") {

@@ -27,6 +27,20 @@ export default function Home({
   const [message, setMesaage] = useState("");
   const navigate = useNavigate();
   const userName = userData[0].userName;
+  const randomBackground = () => {
+    const bgColor = [
+      "#c2ff3d",
+      "#ff3de8",
+      "#3dc2ff",
+      "#04e022",
+      "#bc83e6",
+      "#ebb328",
+    ];
+
+    const randomBgColor = bgColor[Math.floor(Math.random() * bgColor.length)];
+
+    return randomBgColor;
+  };
 
   const {
     register,
@@ -44,6 +58,7 @@ export default function Home({
       setMesaage(<p>This name already exist</p>);
     } else {
       setWorkSpace([...workSpace, inputWorkSpace]);
+      randomBackground();
       setMesaage("");
       setToggle(!toggle);
       reset();
@@ -139,6 +154,9 @@ export default function Home({
                         color="warning"
                         {...register("workSpaceName", {
                           required: true,
+                          pattern: {
+                            value: /^(?=)(?=).{4,15}$/,
+                          },
                         })}
                       />
 
@@ -156,6 +174,9 @@ export default function Home({
                         color="warning"
                         {...register("boardName", {
                           required: true,
+                          pattern: {
+                            value: /^(?=)(?=).{4,15}$/,
+                          },
                         })}
                       />
 
@@ -173,7 +194,12 @@ export default function Home({
               </ThemeProvider>
             </div>
           ) : (
-            <WorkSpace workSpace={workSpace} setToggle={setToggle} />
+            <WorkSpace
+              workSpace={workSpace}
+              setWorkSpace={setWorkSpace}
+              setToggle={setToggle}
+              randomBackground={randomBackground}
+            />
           )}
         </>
       )}

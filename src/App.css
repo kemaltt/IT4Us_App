@@ -167,8 +167,8 @@ h2 {
 .work_space {
   background-color: rgba(236, 222, 222, 0.637);
   width: 90%;
-  height: 80vh;
-  margin: 2vh auto;
+  height: 75vh;
+  margin: 1vh auto;
   border-radius: 20px;
   display: flex;
   flex-wrap: wrap;

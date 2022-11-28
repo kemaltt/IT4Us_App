@@ -10,6 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Home from "./pages/Home";
 import ForgotPassword from "./pages/ForgotPassword";
 import CreateNewPass from "./pages/CreateNewPass";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -80,6 +81,7 @@ function App() {
               <CreateNewPass setUserData={setUserData} userData={userData} />
             }
           />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

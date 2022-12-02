@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import NavPages from "../components/NavPages";
 import { useForm } from "react-hook-form";
 import UsernameGenerator from "username-generator";
+// import axios from "axios";
 
 const theme = createTheme();
 
@@ -31,17 +32,44 @@ export default function Register({ userData, setUserData }) {
     console.log(randomUserName);
     console.log(inputRegister);
 
-    // fetch(`http://localhost:8080/api/signup`, {
+    // fetch("http://localhost:8080/api/signup", {
     //   method: "POST",
-
-    //   userName: null,
-    //   email: "test2@email.com",
-    //   password: "12345678",
+    //   mode: "no-cors",
+    //   headers: {
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //   },
+    //   body: JSON.stringify({
+    //     userName: null,
+    //     email: "test2@email.com",
+    //     password: "12345678",
+    //   }),
     // })
-    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     console.log(response);
+    //     return response.json();
+    //   })
     //   .then((result) => {
     //     console.log(result);
     //   });
+
+    // axios
+    //   .post(`http://localhost:8080/api/signup`, {
+    //     mode: "no-cors",
+    //     headers: {
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     },
+
+    //     userName: null,
+    //     email: "test2@email.com",
+    //     password: "12345678",
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .then((err) => {
+    //     console.log(err);
+    //   });
+
     if (userData[0].userName === inputRegister.userName) {
       setErrorUserName(<p>This name already exist</p>);
     } else if (inputRegister.userName === "") {
@@ -85,13 +113,18 @@ export default function Register({ userData, setUserData }) {
               Create new Account
             </Typography>
 
-            <Grid item sx={{ m: 1 }}>
+            <Grid item sx={{ m: 1, color: "white" }}>
+              Already Registered?
               <Link
-                style={{ textDecoration: "none", color: "white" }}
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  marginLeft: "3px",
+                }}
                 to="/"
                 variant="body2"
               >
-                Already Registered? Login
+                Login
               </Link>
             </Grid>
 

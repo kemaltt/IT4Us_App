@@ -133,7 +133,8 @@ h2 {
 .register,
 .forgot_password,
 .home_page,
-.create_new_pass {
+.create_new_pass,
+.dashboard {
   padding: 2vh 4%;
   text-align: center;
 }

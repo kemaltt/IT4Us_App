@@ -1,60 +1,60 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Copyright from '../components/Copyright'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
-import TextField from '@mui/material/TextField'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Link, useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import React from "react";
+import Navbar from "../components/Navbar";
+import Copyright from "../components/Copyright";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
-const theme = createTheme()
+const theme = createTheme();
 export default function Home({ isLogin, setIsLogin, setIsLoading }) {
-  const [message, setMessage] = useState('')
-  const navigate = useNavigate()
-  const userData = JSON.parse(localStorage.getItem('userData'))
-  console.log(userData)
-  const userEmail = userData[0].email
-  const userPassword = userData[0].password
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  console.log(userData);
+  const userEmail = userData[0].email;
+  const userPassword = userData[0].password;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
   const onSubmit = (inputLogin) => {
     if (
       userEmail === inputLogin.email &&
       userPassword === inputLogin.password
     ) {
-      setIsLogin(true)
-      setMessage(<p style={{ color: 'yellowgreen' }}>Entry successful!</p>)
-      setIsLoading(true)
+      setIsLogin(true);
+      setMessage(<p style={{ color: "yellowgreen" }}>Entry successful!</p>);
+      setIsLoading(true);
       setTimeout(() => {
-        navigate('/home')
+        navigate("/home");
         setTimeout(() => {
-          setIsLoading(false)
-        }, 1300)
-      }, 1000)
+          setIsLoading(false);
+        }, 1300);
+      }, 1000);
     } else if (userEmail !== inputLogin.email) {
       setMessage(
-        <p style={{ color: 'red' }}>
+        <p style={{ color: "red" }}>
           Your email not registered or incorrect, Please try again.
-        </p>,
-      )
+        </p>
+      );
     } else if (userPassword !== inputLogin.password) {
       setMessage(
-        <p style={{ color: 'red' }}>
+        <p style={{ color: "red" }}>
           Password false!,please click Forgot Password
-        </p>,
-      )
+        </p>
+      );
     }
-  }
+  };
   return (
     <>
       <Navbar
@@ -75,13 +75,13 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
               <CssBaseline />
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  textAlign: 'center',
-                  alignItems: 'center',
-                  borderRadius: '10px',
-                  padding: '1rem',
-                  color: 'white',
+                  display: "flex",
+                  flexDirection: "column",
+                  textAlign: "center",
+                  alignItems: "center",
+                  borderRadius: "10px",
+                  padding: "1rem",
+                  color: "white",
                 }}
               >
                 <Typography
@@ -103,12 +103,12 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                     required
                     fullWidth
                     id="email"
-                    label="Email Address"
+                    label="EMAIL"
                     name="email"
                     autoComplete="email"
                     autoFocus
                     color="warning"
-                    {...register('email', {
+                    {...register("email", {
                       required: true,
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,15}$/i,
@@ -123,12 +123,12 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                     required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label="PASSWORD"
                     type="password"
                     id="password"
                     autoComplete="current-password"
                     color="warning"
-                    {...register('password', {
+                    {...register("password", {
                       required: true,
                       pattern: {
                         value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/,
@@ -137,14 +137,14 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                   />
                   {message}
                   <Typography
-                    sx={{ textAlign: 'center', pt: 2, fontSize: '12px' }}
+                    sx={{ textAlign: "center", pt: 2, fontSize: "12px" }}
                     component="h1"
                   >
                     <Link
-                      to={'/forgotpassword'}
-                      style={{ color: 'white', textDecoration: 'none' }}
+                      to={"/forgotpassword"}
+                      style={{ color: "white", textDecoration: "none" }}
                     >
-                      {' '}
+                      {" "}
                       Forgot Password?
                     </Link>
                   </Typography>
@@ -158,10 +158,10 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                   </Button>
                   <Typography
                     sx={{
-                      textAlign: 'center',
-                      borderTop: '1px solid white',
+                      textAlign: "center",
+                      borderTop: "1px solid white",
                       pt: 2,
-                      fontSize: '12px',
+                      fontSize: "12px",
                     }}
                     component="h1"
                   >
@@ -169,7 +169,7 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                   </Typography>
 
                   <Button
-                    onClick={() => navigate('/register')}
+                    onClick={() => navigate("/register")}
                     variant="contained"
                     color="secondary"
                     sx={{ mt: 2, mb: 2, pl: 5, pr: 5 }}
@@ -185,5 +185,5 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
 
       <Copyright className="footer" />
     </>
-  )
+  );
 }

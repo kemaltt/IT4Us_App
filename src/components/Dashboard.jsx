@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -9,11 +11,16 @@ import Select from "@mui/material/Select";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Dashboard({ workSpace, setWorkSpace }) {
+  const [toggle, setToggle] = useState(false);
   const location = useLocation();
   const el = location.state.el;
   const [workSpacesName, setWorkSpacesName] = useState(el.workSpaceName);
   const [boardsName, setBoardsName] = useState(el.boardName);
 
+  const isOpen = () => {
+    setToggle(!toggle);
+  };
+  console.log(toggle);
   console.log(el);
   console.log(workSpace);
   console.log(workSpacesName);
@@ -80,7 +87,33 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
         </div>
       </div>
       <h3>{workSpacesName}</h3>
-      <div className="dash_work_space">
+      <ArrowForwardIosIcon
+        onClick={isOpen}
+        style={{
+          color: "white",
+          position: "absolute",
+          cursor: "pointer",
+          display: toggle ? "none" : "block",
+        }}
+      />
+      <div
+        style={{ transform: toggle ? "translateX(0%)" : null }}
+        className="side_bar"
+      >
+        <ArrowBackIosNewIcon
+          onClick={isOpen}
+          style={{
+            color: "gray",
+            position: "absolute",
+            right: "3%",
+            cursor: "pointer",
+          }}
+        />
+      </div>
+      <div
+        style={{ width: toggle ? "100%" : null }}
+        className="dash_work_space"
+      >
         <h2>{boardsName} </h2>
       </div>
     </div>

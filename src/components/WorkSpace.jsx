@@ -158,7 +158,7 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
 
         {workSpace.map((el, i) => (
           <div
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/dashboard", { state: { el } })}
             key={i}
             style={{
               background: i % 2 === 1 ? "#ebb328" : "green",

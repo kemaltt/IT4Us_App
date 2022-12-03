@@ -6,13 +6,25 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Dashboard() {
-  const [workSpace, setWorkSpace] = useState("");
+export default function Dashboard({ workSpace, setWorkSpace }) {
+  const location = useLocation();
+  const el = location.state.el;
+  const [workSpacesName, setWorkSpacesName] = useState(el.workSpaceName);
+  const [boardsName, setBoardsName] = useState(el.boardName);
+
+  console.log(el);
+  console.log(workSpace);
+  console.log(workSpacesName);
 
   const handleChange = (event) => {
-    setWorkSpace(event.target.value);
+    setWorkSpacesName(event.target.value);
+    const selectedBoardName = workSpace.find((el) => {
+      return el.workSpaceName !== workSpacesName;
+    });
+    console.log(selectedBoardName);
+    setBoardsName(selectedBoardName.boardName);
   };
   const navigate = useNavigate();
   return (
@@ -33,13 +45,16 @@ export default function Dashboard() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={workSpace}
+              value={workSpacesName}
               label="WorkSpaces"
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {workSpace &&
+                workSpace.map((ele, i) => (
+                  <MenuItem key={i} value={ele.workSpaceName}>
+                    <span>{i + 1}</span> . {ele.workSpaceName}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
 
@@ -63,6 +78,10 @@ export default function Dashboard() {
           ></Avatar>
           {/* <p style={{ color: "white" }}>{userName}</p> */}
         </div>
+      </div>
+      <h3>{workSpacesName}</h3>
+      <div className="dash_work_space">
+        <h2>{boardsName} </h2>
       </div>
     </div>
   );

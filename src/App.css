@@ -133,8 +133,7 @@ h2 {
 .register,
 .forgot_password,
 .home_page,
-.create_new_pass,
-.dashboard {
+.create_new_pass {
   padding: 2vh 4%;
   text-align: center;
 }
@@ -190,7 +189,27 @@ h2 {
   line-height: 170px;
   color: #fff;
 }
-
+.dashboard {
+  position: relative;
+}
+.dashboard h3 {
+  font-size: 16px;
+  position: absolute;
+  top: 8%;
+  left: 18%;
+}
+.dashboard .nav_pages {
+  padding: 2vh 4%;
+}
+.dash_work_space {
+  width: 98%;
+  height: 100vh;
+  margin-left: auto;
+  background-color: #fff;
+}
+.dash_work_space h2 {
+  text-align: center;
+}
 @media (max-width: 768px) {
   .nav_desktop {
     display: none;

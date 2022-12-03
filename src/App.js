@@ -81,7 +81,12 @@ function App() {
               <CreateNewPass setUserData={setUserData} userData={userData} />
             }
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard workSpace={workSpace} setWorkSpace={setWorkSpace} />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

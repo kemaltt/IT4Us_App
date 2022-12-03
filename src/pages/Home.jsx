@@ -57,7 +57,13 @@ export default function Home({
     if (workSpaceName.includes(inputWorkSpace.workSpaceName.toLowerCase())) {
       setMesaage(<p>This name already exist</p>);
     } else {
-      setWorkSpace([...workSpace, inputWorkSpace]);
+      setWorkSpace([
+        ...workSpace,
+        {
+          workSpaceName: inputWorkSpace.workSpaceName,
+          boardsName: [{ boardName: inputWorkSpace.boardName }],
+        },
+      ]);
       randomBackground();
       setMesaage("");
       setToggle(!toggle);

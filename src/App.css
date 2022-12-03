@@ -192,15 +192,23 @@ h2 {
 .dashboard {
   position: relative;
 }
-.dashboard h3 {
+.dashboard > h3 {
   font-size: 16px;
   position: absolute;
   top: 10%;
-  left: 18%;
+  left: 16%;
   color: #fff;
 }
 .dashboard .nav_pages {
   padding: 2vh 4%;
+}
+.dashboard .nav_pages .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 45%;
 }
 .dashboard .nav_pages .select_container {
   display: flex;
@@ -210,28 +218,45 @@ h2 {
 .dash_work_space {
   width: 98%;
   height: 80vh;
+  padding: 1vh 1%;
   margin-left: auto;
   background-color: #fff;
   transition: all 0.3s ease-in-out;
 }
+.dash_board_title {
+  width: 70%;
+  margin: 1vh auto;
+  text-align: center;
+}
+.dash_board_title h2 {
+  font-size: 1.2rem;
+  border-bottom: #7e34cf 1px solid;
+  padding-bottom: 2px;
+}
+.boards_container {
+}
 .dashboard .side_bar {
   position: absolute;
-  padding: 6px;
-  width: 20%;
+  padding: 3vh 1%;
+  width: 15%;
   height: 80vh;
   background-color: rgba(195, 187, 187, 0.637);
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
   transform: translateX(-100%);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
   color: gray;
 }
 .dashboard .side_bar h2 {
   font-size: 1rem;
   text-align: center;
 }
-.dash_work_space h2 {
-  text-align: center;
+.side_bar_boards {
+  padding: 1vh 0;
+  margin: 4vh 0;
+  border-bottom: gray solid 1px;
+  border-top: gray solid 1px;
 }
+
 @media (max-width: 768px) {
   .nav_desktop {
     display: none;
@@ -349,6 +374,9 @@ h2 {
   .dashboard .nav_pages .select_container {
     flex-direction: column;
     gap: 0px;
+  }
+  .avatar button {
+    display: none;
   }
   .dashboard h3 {
     font-size: 16px;

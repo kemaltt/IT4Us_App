@@ -48,7 +48,13 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
         </p>
       );
     } else {
-      setWorkSpace([...workSpace, inputWorkSpace]);
+      setWorkSpace([
+        ...workSpace,
+        {
+          workSpaceName: inputWorkSpace.workSpaceName,
+          boardsName: [{ boardName: inputWorkSpace.boardName }],
+        },
+      ]);
       setMesaage("");
       handleClose();
       reset();

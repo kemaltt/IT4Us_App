@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,7 +15,8 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
   const location = useLocation();
   const el = location.state.el;
   const [workSpacesName, setWorkSpacesName] = useState(el.workSpaceName);
-  const [boardsName, setBoardsName] = useState(el.boardName);
+  const [boardsName, setBoardsName] = useState("");
+  const [boardName, setBoardName] = useState(el.boardsName[0].boardName);
 
   const isOpen = () => {
     setToggle(!toggle);
@@ -24,55 +25,68 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
   console.log(el);
   console.log(workSpace);
   console.log(workSpacesName);
+  console.log(boardsName);
 
   const handleChange = (event) => {
     setWorkSpacesName(event.target.value);
     const selectedBoardName = workSpace.find((el) => {
       return el.workSpaceName !== workSpacesName;
     });
-    console.log(selectedBoardName);
-    setBoardsName(selectedBoardName.boardName);
+    const boardsName = selectedBoardName.boardsName;
+    setBoardName(boardsName[0].boardName);
+    setBoardsName(boardsName);
   };
   const navigate = useNavigate();
   return (
     <div className="dashboard">
       <div className="nav_pages">
-        <div onClick={() => navigate("/")} className="logo">
+        <div className="logo">
           {/* <img src="trello.png" alt="logo" /> */}
-          <h4>T4US</h4>
-          <h2>TODO</h2>
-        </div>
+          <div onClick={() => navigate("/")} className="nav_headline">
+            <h4>T4US</h4>
+            <h2>TODO</h2>
+          </div>
+          <div className="select_container">
+            <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
+              <InputLabel id="demo-simple-select-label">WorkSpaces</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={workSpacesName}
+                label="WorkSpaces"
+                onChange={handleChange}
+              >
+                {workSpace &&
+                  workSpace.map((ele, i) => (
+                    <MenuItem key={i} value={ele.workSpaceName}>
+                      <span>{i + 1}</span> . {ele.workSpaceName}
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
 
-        <div className="select_container">
-          <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
-            <InputLabel id="demo-simple-select-label">WorkSpaces</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={workSpacesName}
-              label="WorkSpaces"
-              onChange={handleChange}
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              sx={{ pl: 3, pr: 3 }}
             >
-              {workSpace &&
-                workSpace.map((ele, i) => (
-                  <MenuItem key={i} value={ele.workSpaceName}>
-                    <span>{i + 1}</span> . {ele.workSpaceName}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-
-          <Button
-            type="submit"
-            variant="contained"
-            color="secondary"
-            sx={{ pl: 3, pr: 3 }}
-          >
-            CREATE
-          </Button>
+              CREATE
+            </Button>
+          </div>
         </div>
 
-        <div>
+        <div
+          className="avatar"
+          style={{ display: "flex", alignItems: "center", gap: "5px" }}
+        >
+          <Button
+            onClick={() => navigate(-1)}
+            variant="contained"
+            color="warning"
+          >
+            Back
+          </Button>
           <Avatar
             sx={{
               m: 0.7,
@@ -110,12 +124,27 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
         />
 
         <h2>{workSpacesName}</h2>
+
+        <div className="side_bar_boards">
+          <h5>Boards</h5>
+          {boardsName &&
+            boardsName.map((boardName, i) => (
+              <p style={{ color: "#7E34CF", cursor: "pointer" }} key={i}>
+                {boardName.boardName}
+              </p>
+            ))}
+        </div>
+        <h5>Settings</h5>
       </div>
       <div
         style={{ width: toggle ? "100%" : null }}
         className="dash_work_space"
       >
-        <h2>{boardsName} </h2>
+        <div className="dash_board_title">
+          <h2>{boardName} </h2>
+          <AddCircleIcon style={{ color: "#7E34CF", cursor: "pointer" }} />
+        </div>
+        <div className="boards_container"></div>
       </div>
     </div>
   );

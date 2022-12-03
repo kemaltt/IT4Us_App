@@ -43,10 +43,7 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
           <h2>TODO</h2>
         </div>
 
-        <div
-          className=""
-          style={{ display: "flex", gap: "20px", alignItems: "center" }}
-        >
+        <div className="select_container">
           <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
             <InputLabel id="demo-simple-select-label">WorkSpaces</InputLabel>
             <Select
@@ -69,7 +66,7 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
             type="submit"
             variant="contained"
             color="secondary"
-            sx={{ pl: 5, pr: 5 }}
+            sx={{ pl: 3, pr: 3 }}
           >
             CREATE
           </Button>

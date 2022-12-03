@@ -89,6 +89,7 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
         style={{
           color: "white",
           position: "absolute",
+
           cursor: "pointer",
           display: toggle ? "none" : "block",
         }}
@@ -103,9 +104,12 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
             color: "gray",
             position: "absolute",
             right: "3%",
+            top: "3%",
             cursor: "pointer",
           }}
         />
+
+        <h2>{workSpacesName}</h2>
       </div>
       <div
         style={{ width: toggle ? "100%" : null }}

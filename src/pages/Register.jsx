@@ -18,6 +18,7 @@ const theme = createTheme();
 
 export default function Register({ userData, setUserData }) {
   const [errorUserName, setErrorUserName] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
   const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
   const navigate = useNavigate();
   console.log(userData);
@@ -71,12 +72,19 @@ export default function Register({ userData, setUserData }) {
     //   });
 
     if (userData[0].userName === inputRegister.userName) {
-      setErrorUserName(<p>This name already exist</p>);
+      setErrorUserName(<p>This name already exist.Please try another name.</p>);
     } else if (inputRegister.userName === "") {
       inputRegister.userName = randomUserName;
       setErrorUserName("");
       if (inputRegister.password !== inputRegister.passwordConfirm) {
         setErrorPasswordConfirm(<p>Password not matched</p>);
+      } else if (userData[0].email === inputRegister.email) {
+        setErrorEmail(
+          <p>
+            This email already exist.Please {<Link to={"/"}>login</Link>} try
+            another name.
+          </p>
+        );
       } else {
         setUserData([inputRegister]);
         setTimeout(() => {
@@ -86,6 +94,14 @@ export default function Register({ userData, setUserData }) {
     } else {
       if (inputRegister.password !== inputRegister.passwordConfirm) {
         setErrorPasswordConfirm(<p>Password not matched</p>);
+      } else if (userData[0].email === inputRegister.email) {
+        setErrorEmail(
+          <p>
+            This email already exist.Please
+            {<Link to={"/"}>login</Link>}
+            try another one.
+          </p>
+        );
       } else {
         setUserData([inputRegister]);
         setTimeout(() => {
@@ -160,7 +176,7 @@ export default function Register({ userData, setUserData }) {
 
                 <Grid item xs={12}>
                   {errors.email && <p>Please enter a valid email address</p>}
-
+                  {errorEmail}
                   <TextField
                     required
                     fullWidth

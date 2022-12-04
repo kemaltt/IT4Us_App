@@ -127,6 +127,10 @@ h2 {
   font-size: 14px;
 }
 
+.register p > a {
+  text-decoration: none;
+  color: white;
+}
 .privacy_policy,
 .about,
 .contact,

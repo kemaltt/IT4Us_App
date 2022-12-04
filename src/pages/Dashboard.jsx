@@ -130,13 +130,15 @@ export default function Dashboard({ workSpace, setWorkSpace, isLogin }) {
 
         <div className="side_bar_boards">
           <h5>Boards</h5>
-          {boardsName
-            ? boardsName.map((boardName, i) => (
-                <p style={{ color: "#7E34CF", cursor: "pointer" }} key={i}>
-                  {boardName.boardName}
-                </p>
-              ))
-            : boardName}
+          {boardsName ? (
+            boardsName.map((boardName, i) => (
+              <p style={{ color: "#7E34CF", cursor: "pointer" }} key={i}>
+                {boardName.boardName}
+              </p>
+            ))
+          ) : (
+            <p style={{ color: "#7E34CF", cursor: "pointer" }}>{boardName}</p>
+          )}
         </div>
         <h5>Settings</h5>
       </div>

@@ -22,7 +22,7 @@ function App() {
     {
       userName: "test",
       email: "test@gmail.com",
-      password: "",
+      password: "Test.123",
       passwordConfirm: "",
     },
   ]);
@@ -84,11 +84,15 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Dashboard
-                workSpace={workSpace}
-                setWorkSpace={setWorkSpace}
-                isLogin={isLogin}
-              />
+              isLogin ? (
+                <Dashboard
+                  workSpace={workSpace}
+                  setWorkSpace={setWorkSpace}
+                  isLogin={isLogin}
+                />
+              ) : (
+                <Login />
+              )
             }
           />
         </Routes>

@@ -84,7 +84,11 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Dashboard workSpace={workSpace} setWorkSpace={setWorkSpace} />
+              <Dashboard
+                workSpace={workSpace}
+                setWorkSpace={setWorkSpace}
+                isLogin={isLogin}
+              />
             }
           />
         </Routes>

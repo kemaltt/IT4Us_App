@@ -10,7 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Dashboard({ workSpace, setWorkSpace }) {
+export default function Dashboard({ workSpace, setWorkSpace, isLogin }) {
   const [toggle, setToggle] = useState(false);
   const location = useLocation();
   const el = location.state.el;
@@ -42,7 +42,10 @@ export default function Dashboard({ workSpace, setWorkSpace }) {
       <div className="nav_pages">
         <div className="logo">
           {/* <img src="trello.png" alt="logo" /> */}
-          <div onClick={() => navigate("/")} className="nav_headline">
+          <div
+            onClick={() => navigate(isLogin ? "/home" : "/")}
+            className="nav_headline"
+          >
             <h4>T4US</h4>
             <h2>TODO</h2>
           </div>

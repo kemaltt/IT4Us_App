@@ -46,7 +46,7 @@ export default function Dashboard({ workSpace, setWorkSpace, isLogin }) {
             onClick={() => navigate(isLogin ? "/home" : "/")}
             className="nav_headline"
           >
-            <h4>T4US</h4>
+            <h4>IT4US</h4>
             <h2>TODO</h2>
           </div>
           <div className="select_container">

@@ -49,7 +49,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route
             path="/forgotpassword"
-            element={<ForgotPassword isLogin={isLogin} />}
+            element={<ForgotPassword userData={userData} isLogin={isLogin} />}
           />
           <Route
             path="/home"

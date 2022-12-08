@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import { Link, useNavigate } from "react-router-dom";
 // import { MdLogout } from 'react-icons/md'
 
 export default function NavMobile({ setIsLogin, isLogin, setLoading }) {
-  const [toggle, setToggle] = useState(false)
-  const navigate = useNavigate()
+  const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate();
   const handleToggle = () => {
-    setToggle(!toggle)
-  }
+    setToggle(!toggle);
+  };
   // const handleLogOut = () => {
   //   // localStorage.clear()
   //   setTimeout(() => {
@@ -22,32 +24,32 @@ export default function NavMobile({ setIsLogin, isLogin, setLoading }) {
   return (
     <>
       <div className="nav_mobile">
-        <div onClick={() => navigate('/')} className="logo">
+        <div onClick={() => navigate("/")} className="logo">
           {/* <img src="trello.png" alt="logo" /> */}
           <h4>IT4US</h4>
           <h2>TODO</h2>
         </div>
 
         {!toggle ? (
-          <AiOutlineMenu
-            style={{ color: 'white' }}
+          <MenuIcon
+            style={{ color: "white", fontSize: "2.5rem" }}
             onClick={handleToggle}
             className="nav_menü"
           />
         ) : (
           //   <ImCross onClick={handleToggle} className="nav_menü" />
-          <i
-            style={{ color: 'white' }}
+          <MenuOpenIcon
+            style={{ color: "white", fontSize: "2.5rem" }}
             onClick={handleToggle}
-            class="las la-times nav_menü"
-          ></i>
+            className="nav-menü"
+          />
         )}
       </div>
       {toggle ? (
         <div className="nav_toggle_item">
           <ul>
-            <Link to={'/about'}>About</Link>
-            <Link to={'/contact'}>Contact</Link>
+            <Link to={"/about"}>About</Link>
+            <Link to={"/contact"}>Contact</Link>
           </ul>
           {/* <div className="nav_items_auth">
             {isLogin ? (
@@ -64,5 +66,5 @@ export default function NavMobile({ setIsLogin, isLogin, setLoading }) {
         </div>
       ) : null}
     </>
-  )
+  );
 }

@@ -1,12 +1,10 @@
-import React from "react";
-
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -14,7 +12,8 @@ import NavPages from "../components/NavPages";
 
 const theme = createTheme();
 
-export default function ForgotPassword() {
+export default function ForgotPassword({ userData }) {
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -24,8 +23,19 @@ export default function ForgotPassword() {
   } = useForm();
 
   const onSubmit = (inputEmail) => {
-    console.log(inputEmail);
-    navigate("/createnewpass", { state: { inputEmail } });
+    const userEmail = userData[0].email;
+    const email = inputEmail.email;
+    console.log(email);
+    console.log(userEmail);
+    if (userEmail === email) {
+      navigate("/createnewpass", { state: { inputEmail } });
+    } else {
+      setErrorMessage(
+        <p style={{ color: "red" }}>
+          Your email not registered or incorrect, Please try again.
+        </p>
+      );
+    }
   };
   return (
     <div className="forgot_password">
@@ -60,7 +70,7 @@ export default function ForgotPassword() {
               // }}
             >
               {errors.email && <p>Please enter a valid email address</p>}
-
+              {errorMessage}
               <TextField
                 required
                 fullWidth

@@ -5,18 +5,35 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Dashboard({ workSpace, setWorkSpace, isLogin }) {
+export default function Dashboard({
+  workSpace,
+  setWorkSpace,
+  isLogin,
+  setIsLogin,
+  userData,
+}) {
   const [toggle, setToggle] = useState(false);
   const location = useLocation();
   const el = location.state.el;
   const [workSpacesName, setWorkSpacesName] = useState(el.workSpaceName);
   const [boardsName, setBoardsName] = useState("");
   const [boardName, setBoardName] = useState(el.boardsName[0].boardName);
+  const userName = userData[0].userName;
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const isOpen = () => {
     setToggle(!toggle);
@@ -35,6 +52,11 @@ export default function Dashboard({ workSpace, setWorkSpace, isLogin }) {
     const boardsName = selectedBoardName.boardsName;
     setBoardName(boardsName[0].boardName);
     setBoardsName(boardsName);
+  };
+
+  const handleLogOut = () => {
+    setIsLogin(false);
+    navigate("/");
   };
   const navigate = useNavigate();
   return (
@@ -91,13 +113,31 @@ export default function Dashboard({ workSpace, setWorkSpace, isLogin }) {
             Back
           </Button>
           <Avatar
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
             sx={{
               m: 0.7,
               bgcolor: "secondary.main",
               // fontSize: '10px',
             }}
           ></Avatar>
-          {/* <p style={{ color: "white" }}>{userName}</p> */}
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <p style={{ color: "#7E34CF", margin: "0 15%" }}>{userName}</p>
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>Settings</MenuItem>
+            <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+          </Menu>
         </div>
       </div>
       <h3>{workSpacesName}</h3>

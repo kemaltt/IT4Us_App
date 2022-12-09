@@ -237,7 +237,7 @@ h2 {
   padding: 3vh 1%;
   width: 15%;
   height: 80vh;
-  background-color: rgba(195, 187, 187, 0.637);
+  background-color: rgba(228, 227, 227, 0.637);
   border-radius: 0 20px 20px 0;
   transform: translateX(-100%);
   transition: all 0.4s ease-in-out;

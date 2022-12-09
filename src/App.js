@@ -86,9 +86,11 @@ function App() {
             element={
               isLogin ? (
                 <Dashboard
+                  userData={userData}
                   workSpace={workSpace}
                   setWorkSpace={setWorkSpace}
                   isLogin={isLogin}
+                  setIsLogin={setIsLogin}
                 />
               ) : (
                 <Login />

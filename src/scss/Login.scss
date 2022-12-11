@@ -1,0 +1,54 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 100vh; */
+  padding: 0 4%;
+
+  img {
+    width: 67%;
+    height: 70vh;
+    border-radius: 20px;
+  }
+  .login {
+    width: 33%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    padding: 5vh 2%;
+    img {
+      width: 50%;
+      height: 60vh;
+      border-radius: 20px;
+    }
+
+    .login {
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .main {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 0;
+    img {
+      width: 90%;
+      height: 50vh;
+      border-radius: 20px;
+    }
+
+    .login {
+      width: 80%;
+    }
+  }
+}

@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import NavPages from "../components/NavPages";
+import NavPages from "../components/navbar/NavPages";
 import { useForm } from "react-hook-form";
 import UsernameGenerator from "username-generator";
 // import axios from "axios";

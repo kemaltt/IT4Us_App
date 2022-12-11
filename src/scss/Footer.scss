@@ -1,0 +1,10 @@
+.footer {
+  padding: 2vh 4%;
+  text-align: left;
+}
+@media (max-width: 576px) {
+  .footer {
+    text-align: center;
+    padding: 2vh 4%;
+  }
+}

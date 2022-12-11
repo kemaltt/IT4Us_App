@@ -14,7 +14,7 @@ export default function NavDesktop({ setIsLogin, isLogin, setLoading }) {
   //   navigate('/login')
   // }
   return (
-    <div className="nav_desktop">
+    <div className="nav-desktop">
       <div onClick={() => navigate("/")} className="logo">
         {/* <img src="trello.png" alt="logo" /> */}
         <h4>IT4US</h4>

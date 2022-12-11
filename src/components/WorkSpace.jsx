@@ -64,7 +64,7 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
   return (
     <>
       <h2 style={{ color: "white" }}>Welcome TODO</h2>
-      <div className="work_space">
+      <div className="work-space">
         <Modal
           open={open}
           onClose={handleClose}
@@ -171,7 +171,7 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
               cursor: "pointer",
             }}
             // style={{ background: randomBackground() }}
-            className="work_space_card"
+            className="work-space-card"
           >
             <CgAttachment style={{ fontSize: "1.5rem" }} />
             <h3>{el.workSpaceName}</h3>
@@ -180,7 +180,7 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
         <div
           onClick={createWorkSpace}
           style={{ background: "#5C17CF" }}
-          className="work_space_card"
+          className="work-space-card"
         >
           <h3>Create</h3>
         </div>

@@ -1,9 +1,9 @@
-import React from 'react'
-import NavPages from '../components/NavPages'
+import React from "react";
+import NavPages from "../components/navbar/NavPages";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="privacy_policy">
+    <div className="privacy-policy">
       <NavPages />
       <h2>Privacy Policy</h2>
       <div className="description">
@@ -23,5 +23,5 @@ export default function PrivacyPolicy() {
         </p>
       </div>
     </div>
-  )
+  );
 }

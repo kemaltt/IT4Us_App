@@ -22,7 +22,7 @@ export default function NavMobile({ setIsLogin, isLogin, setLoading }) {
   // }
   return (
     <>
-      <div className="nav_mobile">
+      <div className="nav-mobile">
         <div onClick={() => navigate("/")} className="logo">
           {/* <img src="trello.png" alt="logo" /> */}
           <h4>IT4US</h4>
@@ -33,7 +33,7 @@ export default function NavMobile({ setIsLogin, isLogin, setLoading }) {
           <MenuIcon
             style={{ color: "white", fontSize: "2.5rem" }}
             onClick={handleToggle}
-            className="nav_menü"
+            className="nav-menü"
           />
         ) : (
           //   <ImCross onClick={handleToggle} className="nav_menü" />
@@ -45,7 +45,7 @@ export default function NavMobile({ setIsLogin, isLogin, setLoading }) {
         )}
       </div>
       {toggle ? (
-        <div className="nav_toggle_item">
+        <div className="nav-toggle-items">
           <ul>
             <Link to={"/about"}>About</Link>
             <Link to={"/contact"}>Contact</Link>

@@ -1,8 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import Copyright from "../components/Copyright";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -72,7 +71,6 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
         <div className="login">
           <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
-              <CssBaseline />
               <Box
                 sx={{
                   display: "flex",
@@ -150,6 +148,7 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                   </Typography>
                   <Button
                     type="submit"
+                    fullWidth
                     variant="contained"
                     color="warning"
                     sx={{ mt: 2, mb: 2, pl: 5, pr: 5 }}
@@ -170,6 +169,7 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
 
                   <Button
                     onClick={() => navigate("/register")}
+                    fullWidth
                     variant="contained"
                     color="secondary"
                     sx={{ mt: 2, mb: 2, pl: 5, pr: 5 }}

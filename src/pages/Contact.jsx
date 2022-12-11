@@ -1,5 +1,5 @@
-import React from 'react'
-import NavPages from '../components/NavPages'
+import React from "react";
+import NavPages from "../components/navbar/NavPages";
 
 export default function Contact() {
   return (
@@ -23,5 +23,5 @@ export default function Contact() {
         </p>
       </div>
     </div>
-  )
+  );
 }

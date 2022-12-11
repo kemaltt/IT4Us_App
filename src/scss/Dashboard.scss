@@ -1,0 +1,106 @@
+.dashboard {
+  position: relative;
+  h3 {
+    font-size: 16px;
+    position: absolute;
+    top: 10%;
+    left: 16%;
+    color: #fff;
+  }
+  .nav-pages {
+    padding: 2vh 4%;
+    .logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      width: 45%;
+    }
+    .select-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .avatar {
+      .mobile-btn {
+        display: none;
+      }
+    }
+  }
+  .dash-work-space {
+    width: 98%;
+    height: 80vh;
+    padding: 1vh 1%;
+    margin-left: auto;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    .dash-board-title {
+      width: 70%;
+      margin: 1vh auto;
+      text-align: center;
+      h2 {
+        font-size: 1.2rem;
+        border-bottom: #7e34cf 1px solid;
+        padding-bottom: 2px;
+      }
+    }
+  }
+  .side-bar {
+    position: absolute;
+    padding: 3vh 1%;
+    width: 15%;
+    height: 80vh;
+    background-color: rgba(228, 227, 227, 0.637);
+    border-radius: 0 20px 20px 0;
+    transform: translateX(-100%);
+    transition: all 0.4s ease-in-out;
+    color: gray;
+    h2 {
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+  .side-bar-boards {
+    padding: 1vh 0;
+    margin: 4vh 0;
+    border-bottom: gray solid 1px;
+    border-top: gray solid 1px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard {
+    .nav-pages {
+      .select-container {
+        flex-direction: column;
+        gap: 0px;
+      }
+      .avatar {
+        flex-direction: column;
+        gap: 0px;
+        .desktop-btn {
+          display: none;
+        }
+        .mobile-btn {
+          display: block;
+          color: #fff;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+    h3 {
+      font-size: 16px;
+      top: 13%;
+      left: 18%;
+    }
+    .dash-work-space {
+      width: 94%;
+      height: 80vh;
+    }
+    .side-bar {
+      width: 40%;
+    }
+  }
+}

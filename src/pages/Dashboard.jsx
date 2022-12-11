@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import InputLabel from "@mui/material/InputLabel";
@@ -61,17 +62,17 @@ export default function Dashboard({
   const navigate = useNavigate();
   return (
     <div className="dashboard">
-      <div className="nav_pages">
+      <div className="nav-pages">
         <div className="logo">
           {/* <img src="trello.png" alt="logo" /> */}
           <div
             onClick={() => navigate(isLogin ? "/home" : "/")}
-            className="nav_headline"
+            className="nav-headline"
           >
             <h4>IT4US</h4>
             <h2>TODO</h2>
           </div>
-          <div className="select_container">
+          <div className="select-container">
             <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
               <InputLabel id="demo-simple-select-label">WorkSpaces</InputLabel>
               <Select
@@ -109,9 +110,14 @@ export default function Dashboard({
             onClick={() => navigate(-1)}
             variant="contained"
             color="warning"
+            className="desktop-btn"
           >
             Back
           </Button>
+          <ArrowBackIosIcon
+            onClick={() => navigate(-1)}
+            className="mobile-btn"
+          />
           <Avatar
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
@@ -153,7 +159,7 @@ export default function Dashboard({
       />
       <div
         style={{ transform: toggle ? "translateX(0%)" : null }}
-        className="side_bar"
+        className="side-bar"
       >
         <ArrowBackIosNewIcon
           onClick={isOpen}
@@ -168,7 +174,7 @@ export default function Dashboard({
 
         <h2>{workSpacesName}</h2>
 
-        <div className="side_bar_boards">
+        <div className="side-bar-boards">
           <h5>Boards</h5>
           {boardsName ? (
             boardsName.map((boardName, i) => (
@@ -184,13 +190,13 @@ export default function Dashboard({
       </div>
       <div
         style={{ width: toggle ? "100%" : null }}
-        className="dash_work_space"
+        className="dash-work-space"
       >
-        <div className="dash_board_title">
+        <div className="dash-board-title">
           <h2>{boardName} </h2>
           <AddCircleIcon style={{ color: "#7E34CF", cursor: "pointer" }} />
         </div>
-        <div className="boards_container"></div>
+        <div className="boards-container"></div>
       </div>
     </div>
   );

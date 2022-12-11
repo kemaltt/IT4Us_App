@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+@import "./Variables.scss";
+// text font sizes will be defined here
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Baloo 2", cursive;
+  background-image: $backgroundColor;
+}
+
+.register p,
+.login p,
+.forgot-password p,
+.create-new_pass p,
+.home p {
+  color: tomato;
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+
+.privacy-policy,
+.about,
+.contact,
+.register,
+.forgot_password,
+.home-page,
+.create-new-pass {
+  padding: 2vh 4%;
+  text-align: center;
+}
+.privacy-policy .description,
+.about .description,
+.contact .description {
+  padding: 5vh 2%;
+  background-color: rgba(236, 222, 222, 0.637);
+  border-radius: 20px;
+}

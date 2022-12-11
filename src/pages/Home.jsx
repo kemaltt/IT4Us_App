@@ -74,9 +74,9 @@ export default function Home({
   console.log(workSpace);
   console.log(toggle);
   return (
-    <div className="home_page">
+    <div className="home-page">
       {/* <Navbar /> */}
-      <div className="nav_pages">
+      <div className="nav-pages">
         <div onClick={() => navigate("/")} className="logo">
           {/* <img src="trello.png" alt="logo" /> */}
           <h4>T4US</h4>

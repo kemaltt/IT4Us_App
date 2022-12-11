@@ -5,7 +5,7 @@ export default function NavPages() {
   const navigate = useNavigate();
 
   return (
-    <div className="nav_pages">
+    <div className="nav-pages">
       <div onClick={() => navigate("/")} className="logo">
         {/* <img src="trello.png" alt="logo" /> */}
         <h4>IT4US</h4>

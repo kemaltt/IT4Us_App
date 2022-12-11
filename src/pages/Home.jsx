@@ -26,7 +26,7 @@ export default function Home({
 }) {
   const [message, setMesaage] = useState("");
   const navigate = useNavigate();
-  const userName = userData[0].userName;
+  // const userName = userData[0].userName;
   const randomBackground = () => {
     const bgColor = [
       "#c2ff3d",

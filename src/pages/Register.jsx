@@ -33,26 +33,34 @@ export default function Register({ userData, setUserData }) {
     console.log(randomUserName);
     console.log(inputRegister);
 
-    // fetch("http://localhost:8080/api/signup", {
+    // fetch("http://dart-dev.fria.io/api/signup", {
     //   method: "POST",
     //   mode: "no-cors",
     //   headers: {
-    //     "Content-Type": "application/x-www-form-urlencoded",
+    //     "Content-Type": "'Content-Type': 'application/json' ",
     //   },
-    //   body: JSON.stringify({
+    //   body: {
     //     userName: null,
-    //     email: "test2@email.com",
-    //     password: "12345678",
-    //   }),
+    //     email: "test9@email.com",
+    //     password: "123456798",
+    //   },
     // })
-    //   .then((response) => {
-    //     console.log(response);
-    //     return response.json();
-    //   })
+    //   .then((response) => response.json())
     //   .then((result) => {
     //     console.log(result);
     //   });
 
+    // axios
+    //   .post("http://dart-dev.fria.io/api/signup", {
+    //     mode: "no-cors",
+    //     userName: null,
+    //     email: "test9@email.com",
+    //     password: "123456798",
+    //   })
+    //   .then((response) => {
+    //     console.log(response.status);
+    //     console.log(response.data.token);
+    //   });
     // axios
     //   .post(`http://localhost:8080/api/signup`, {
     //     mode: "no-cors",

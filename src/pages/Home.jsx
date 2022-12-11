@@ -91,7 +91,7 @@ export default function Home({
               // fontSize: '10px',
             }}
           ></Avatar>
-          <p style={{ color: "white" }}>{userName}</p>
+          {/* <p style={{ color: "white" }}>{userName}</p> */}
         </div>
       </div>
       {isLoading ? (

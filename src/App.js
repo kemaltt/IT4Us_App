@@ -27,7 +27,7 @@ function App() {
     },
   ]);
 
-  localStorage.setItem("userData", JSON.stringify(userData));
+  // localStorage.setItem("userData", JSON.stringify(userData));
 
   return (
     <div className="App">
@@ -41,6 +41,7 @@ function App() {
                 setIsLogin={setIsLogin}
                 setIsLoading={setIsLoading}
                 isLoading={isLoading}
+                userData={userData}
               />
             }
           />

@@ -12,10 +12,10 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const theme = createTheme();
-export default function Home({ isLogin, setIsLogin, setIsLoading }) {
+export default function Home({ userData, isLogin, setIsLogin, setIsLoading }) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  // const userData = JSON.parse(localStorage.getItem("userData"));
   console.log(userData);
   const userEmail = userData[0].email;
   const userPassword = userData[0].password;
@@ -76,8 +76,6 @@ export default function Home({ isLogin, setIsLogin, setIsLoading }) {
                   display: "flex",
                   flexDirection: "column",
                   textAlign: "center",
-                  alignItems: "center",
-                  borderRadius: "10px",
                   padding: "1rem",
                   color: "white",
                 }}

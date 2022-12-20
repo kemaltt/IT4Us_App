@@ -9,11 +9,13 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 const theme = createTheme();
-export default function Home({ userData, isLogin, setIsLogin, setIsLoading }) {
+export default function Home({ isLogin, setIsLogin }) {
   const [message, setMessage] = useState("");
+  const { userData, setIsLoading } = useContext(UserContext);
   const navigate = useNavigate();
   // const userData = JSON.parse(localStorage.getItem("userData"));
   console.log(userData);
@@ -32,7 +34,7 @@ export default function Home({ userData, isLogin, setIsLogin, setIsLoading }) {
       userPassword === inputLogin.password
     ) {
       setIsLogin(true);
-      setMessage(<p style={{ color: "yellowgreen" }}>Entry successful!</p>);
+      setMessage(<p style={{ color: "yellowgreen" }}>Login successful</p>);
       setIsLoading(true);
       setTimeout(() => {
         navigate("/home");
@@ -93,7 +95,6 @@ export default function Home({ userData, isLogin, setIsLogin, setIsLoading }) {
                   onSubmit={handleSubmit(onSubmit)}
                   noValidate
                 >
-                  {errors.email && <p>Please enter a valid email address</p>}
                   <TextField
                     margin="normal"
                     required
@@ -111,8 +112,8 @@ export default function Home({ userData, isLogin, setIsLogin, setIsLoading }) {
                       },
                     })}
                   />
+                  {errors.email && <p>Please enter a valid email address</p>}
 
-                  {errors.password && <p>Please enter a valid password</p>}
                   <TextField
                     margin="normal"
                     marginbottom="8px"
@@ -131,6 +132,7 @@ export default function Home({ userData, isLogin, setIsLogin, setIsLoading }) {
                       },
                     })}
                   />
+                  {errors.password && <p>Please enter a valid password</p>}
                   {message}
                   <Typography
                     sx={{ textAlign: "center", pt: 2, fontSize: "12px" }}

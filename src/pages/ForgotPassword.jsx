@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -8,11 +8,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import NavPages from "../components/navbar/NavPages";
+import UserContext from "../contexts/UserContext";
 
 const theme = createTheme();
 
-export default function ForgotPassword({ userData }) {
+export default function ForgotPassword() {
   const [errorMessage, setErrorMessage] = useState("");
+  const { userData } = useContext(UserContext);
   const navigate = useNavigate();
 
   const {
@@ -67,8 +69,6 @@ export default function ForgotPassword({ userData }) {
               //   padding: '10px',
               // }}
             >
-              {errors.email && <p>Please enter a valid email address</p>}
-              {errorMessage}
               <TextField
                 required
                 fullWidth
@@ -84,7 +84,8 @@ export default function ForgotPassword({ userData }) {
                   },
                 })}
               />
-
+              {errors.email && <p>Please enter a valid email address</p>}
+              {errorMessage}
               <Button
                 type="submit"
                 variant="contained"

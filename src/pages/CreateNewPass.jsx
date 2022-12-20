@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -9,10 +9,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate, useLocation } from "react-router-dom";
 import NavPages from "../components/navbar/NavPages";
 import { useForm } from "react-hook-form";
+import UserContext from "../contexts/UserContext";
 
 const theme = createTheme();
 
-export default function CreateNewPass({ userData, setUserData }) {
+export default function CreateNewPass() {
+  const { userData, setUserData } = useContext(UserContext);
   const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,7 +35,7 @@ export default function CreateNewPass({ userData, setUserData }) {
       setErrorPasswordConfirm(<p>Password not matched</p>);
     } else {
       setErrorPasswordConfirm(
-        <p style={{ color: "yellowgreen" }}>successful</p>
+        <p style={{ color: "yellowgreen" }}>Password created successfuly</p>
       );
       userInfo.password = inputNewPassword.password;
       userInfo.passwordConfirm = inputNewPassword.passwordConfirm;
@@ -69,8 +71,6 @@ export default function CreateNewPass({ userData, setUserData }) {
             >
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  {errors.password && <p>Please enter a valid password</p>}
-
                   <TextField
                     required
                     fullWidth
@@ -87,12 +87,9 @@ export default function CreateNewPass({ userData, setUserData }) {
                       },
                     })}
                   />
+                  {errors.password && <p>Please enter a valid password</p>}
                 </Grid>
                 <Grid item xs={12}>
-                  {errorPasswordConfirm}
-                  {errors.passwordConfirm && (
-                    <p>Please enter a valid password</p>
-                  )}
                   <TextField
                     required
                     fullWidth
@@ -109,6 +106,10 @@ export default function CreateNewPass({ userData, setUserData }) {
                       //   },
                     })}
                   />
+                  {errorPasswordConfirm}
+                  {errors.passwordConfirm && (
+                    <p>Please enter a valid password</p>
+                  )}
                 </Grid>
               </Grid>
               <Button

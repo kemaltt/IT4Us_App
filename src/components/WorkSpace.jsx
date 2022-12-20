@@ -103,12 +103,6 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
                 >
                   Create a Workspace and a Board than start add your POST-IT
                 </Typography>
-                {errors.workSpaceName && (
-                  <p style={{ color: "red", margin: "0" }}>
-                    Please enter a valid Workspace name
-                  </p>
-                )}
-                {message}
                 <TextField
                   margin="normal"
                   autoComplete="given-name"
@@ -126,12 +120,13 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
                     },
                   })}
                 />
-
-                {errors.boardName && (
+                {errors.workSpaceName && (
                   <p style={{ color: "red", margin: "0" }}>
-                    Please enter a valid boardname
+                    Please enter a valid Workspace name
                   </p>
                 )}
+                {message}
+
                 <TextField
                   margin="normal"
                   autoComplete="given-name"
@@ -148,6 +143,11 @@ export default function WorkSpace({ workSpace, setWorkSpace }) {
                     },
                   })}
                 />
+                {errors.boardName && (
+                  <p style={{ color: "red", margin: "0" }}>
+                    Please enter a valid boardname
+                  </p>
+                )}
 
                 <Button
                   type="submit"

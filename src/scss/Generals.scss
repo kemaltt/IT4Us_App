@@ -18,9 +18,10 @@ body {
 .forgot-password p,
 .create-new-pass p,
 .home p {
-  color: tomato;
-  margin-bottom: 2px;
+  color: red;
   font-size: 14px;
+  margin: 0;
+  margin-top: 0.5vh;
 }
 
 .privacy-policy,

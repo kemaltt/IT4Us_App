@@ -11,36 +11,31 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import WorkSpace from "../components/WorkSpace";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 const theme = createTheme();
 
-export default function Home({
-  isLogin,
-  isLoading,
-  userData,
-  setWorkSpace,
-  workSpace,
-  toggle,
-  setToggle,
-}) {
+export default function Home() {
   const [message, setMesaage] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const { isLoading, setWorkSpace, workSpace } = useContext(UserContext);
   const navigate = useNavigate();
   // const userName = userData[0].userName;
-  const randomBackground = () => {
-    const bgColor = [
-      "#c2ff3d",
-      "#ff3de8",
-      "#3dc2ff",
-      "#04e022",
-      "#bc83e6",
-      "#ebb328",
-    ];
+  // const randomBackground = () => {
+  //   const bgColor = [
+  //     "#c2ff3d",
+  //     "#ff3de8",
+  //     "#3dc2ff",
+  //     "#04e022",
+  //     "#bc83e6",
+  //     "#ebb328",
+  //   ];
 
-    const randomBgColor = bgColor[Math.floor(Math.random() * bgColor.length)];
+  //   const randomBgColor = bgColor[Math.floor(Math.random() * bgColor.length)];
 
-    return randomBgColor;
-  };
+  //   return randomBgColor;
+  // };
 
   const {
     register,
@@ -64,7 +59,7 @@ export default function Home({
           boardsName: [{ boardName: inputWorkSpace.boardName }],
         },
       ]);
-      randomBackground();
+      // randomBackground();
       setMesaage("");
       setToggle(!toggle);
       reset();
@@ -144,10 +139,6 @@ export default function Home({
                         Firstly create a Workspace and a Board than start add
                         your POST-IT
                       </Typography>
-                      {errors.workSpaceName && (
-                        <p>Please enter a valid Workspace name</p>
-                      )}
-                      {message}
                       <TextField
                         margin="normal"
                         autoComplete="given-name"
@@ -162,13 +153,14 @@ export default function Home({
                           required: true,
                           pattern: {
                             value: /^(?=)(?=).{4,15}$/,
+                            // value: /^[a-zA-Z0-9][a-zA-Z0-9_]{3,14}$/,
                           },
                         })}
                       />
-
-                      {errors.boardName && (
-                        <p>Please enter a valid boardname</p>
+                      {errors.workSpaceName && (
+                        <p>Please enter a valid Workspace name</p>
                       )}
+                      {message}
                       <TextField
                         margin="normal"
                         autoComplete="given-name"
@@ -186,6 +178,10 @@ export default function Home({
                         })}
                       />
 
+                      {errors.boardName && (
+                        <p>Please enter a valid boardname</p>
+                      )}
+
                       <Button
                         type="submit"
                         variant="contained"
@@ -200,12 +196,7 @@ export default function Home({
               </ThemeProvider>
             </div>
           ) : (
-            <WorkSpace
-              workSpace={workSpace}
-              setWorkSpace={setWorkSpace}
-              setToggle={setToggle}
-              randomBackground={randomBackground}
-            />
+            <WorkSpace workSpace={workSpace} setWorkSpace={setWorkSpace} />
           )}
         </>
       )}

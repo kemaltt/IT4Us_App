@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -11,14 +11,10 @@ import Select from "@mui/material/Select";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate, useLocation } from "react-router-dom";
+import UserContext from "../contexts/UserContext";
 
-export default function Dashboard({
-  workSpace,
-  setWorkSpace,
-  isLogin,
-  setIsLogin,
-  userData,
-}) {
+export default function Dashboard({ isLogin, setIsLogin }) {
+  const { workSpace, userData } = useContext(UserContext);
   const [toggle, setToggle] = useState(false);
   const location = useLocation();
   const el = location.state.el;
@@ -152,7 +148,6 @@ export default function Dashboard({
         style={{
           color: "white",
           position: "absolute",
-
           cursor: "pointer",
           display: toggle ? "none" : "block",
         }}

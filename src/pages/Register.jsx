@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {Button,CssBaseline,TextField,Grid,Box,Typography,Container} from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 import NavPages from "../components/navbar/NavPages";
 import { useForm } from "react-hook-form";
 import UsernameGenerator from "username-generator";
 import UserContext from "../contexts/UserContext";
 import { useContext } from "react";
+import ValidEmail from "../components/ValidUsername";
+import ValidPassword from "../components/ValidPassword";
 // import axios from "axios";
 
 const theme = createTheme();
@@ -26,6 +21,9 @@ export default function Register() {
   const navigate = useNavigate();
   console.log(userData);
 
+
+
+
   const {
     register,
     handleSubmit,
@@ -36,44 +34,16 @@ export default function Register() {
     console.log(randomUserName);
     console.log(inputRegister);
 
-    // fetch("http://dart-dev.fria.io/api/signup", {
-    //   method: "POST",
-    //   mode: "no-cors",
-    //   headers: {
-    //     "Content-Type": "'Content-Type': 'application/json' ",
-    //   },
-    //   body: {
-    //     userName: null,
-    //     email: "test9@email.com",
-    //     password: "123456798",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //   });
-
     // axios
-    //   .post("http://dart-dev.fria.io/api/signup", {
-    //     mode: "no-cors",
-    //     userName: null,
-    //     email: "test9@email.com",
-    //     password: "123456798",
-    //   })
-    //   .then((response) => {
-    //     console.log(response.status);
-    //     console.log(response.data.token);
-    //   });
-    // axios
-    //   .post(`http://localhost:8080/api/signup`, {
+    //   .post(`https://lb4-service.onrender.com/users/signup`, {
     //     mode: "no-cors",
     //     headers: {
     //       "Content-Type": "application/x-www-form-urlencoded",
     //     },
-
-    //     userName: null,
-    //     email: "test2@email.com",
-    //     password: "12345678",
+    //     username: "test",
+    //     email: "test9@email.com",
+    //     password: "123456798",
+    //     role: "test",
     //   })
     //   .then((response) => {
     //     console.log(response.data);
@@ -163,8 +133,6 @@ export default function Register() {
             >
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  {errors.userName && <p> Please enter a valid username </p>}
-                  {errorUserName}
                   <TextField
                     autoComplete="given-name"
                     name="userName"
@@ -182,12 +150,12 @@ export default function Register() {
                         value: /^(?=)(?=).{4,15}$/,
                       },
                     })}
-                  />
+                    />
+                    {errors.userName &&    <ValidEmail/> }
+                    {errorUserName}
                 </Grid>
 
                 <Grid item xs={12}>
-                  {errors.email && <p>Please enter a valid email address</p>}
-                  {errorEmail}
                   <TextField
                     required
                     fullWidth
@@ -202,32 +170,14 @@ export default function Register() {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,15}$/i,
                       },
                     })}
-                  />
+                    />
+                    {errors.email && <ValidEmail/>}
+                    {errorEmail}
                 </Grid>
-                {errors.userName && (
-                  <div className="error-username">
-                    <p>● Username can be 4-15 characters lang</p>
-                    <p>● Username can only start with a letter (a-z)</p>
-                    <p>● Username can contain numbers 0-9</p>
-                    <p>
-                      ● Username can only use the special character
-                      '_'(underline) and cannot use more than one
-                    </p>
-                  </div>
-                )}
-                {errors.password && (
-                  <div className="error-password">
-                    <p>Passwords must contain one of each </p>
-                    <p>● Uppercase letters: (A-Z)</p>
-                    <p>● Lowercase letters: (a-z)</p>
-                    <p>● Numbers: 0-9 </p>
-                    <p>● Symbols ~`!@#$%^&*()_-+= </p>
-                    <p>Passwords can be 8-15 characters long</p>
-                  </div>
-                )}
+      
+        
 
                 <Grid item xs={12}>
-                  {errors.password && <p>Please enter a valid password</p>}
 
                   <TextField
                     required
@@ -244,13 +194,10 @@ export default function Register() {
                         value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/,
                       },
                     })}
-                  />
+                    />
+                    {errors.password && <ValidPassword/>}
                 </Grid>
                 <Grid item xs={12}>
-                  {errorPasswordConfirm}
-                  {errors.passwordConfirm && (
-                    <p>Please enter a valid password</p>
-                  )}
                   <TextField
                     required
                     fullWidth
@@ -263,7 +210,11 @@ export default function Register() {
                     {...register("passwordConfirm", {
                       required: true,
                     })}
-                  />
+                    />
+                    {errorPasswordConfirm}
+                    {errors.passwordConfirm && (
+                      <p>Please enter a valid password</p>
+                    )}
                 </Grid>
               </Grid>
               <Button

@@ -35,3 +35,21 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .register {
+    .error-password,
+    .error-username {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .register {
+    .error-password,
+    .error-username {
+      display: none;
+    }
+  }
+}

@@ -11,6 +11,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useContext } from "react";
 import UserContext from "../contexts/UserContext";
+import ValidPassword from "../components/ValidPassword";
+import ValidEmail from "../components/navbar/ValidEmail";
 
 const theme = createTheme();
 export default function Home({ isLogin, setIsLogin }) {
@@ -112,7 +114,7 @@ export default function Home({ isLogin, setIsLogin }) {
                       },
                     })}
                   />
-                  {errors.email && <p>Please enter a valid email address</p>}
+                  {errors.email && <ValidEmail/>}
 
                   <TextField
                     margin="normal"
@@ -132,7 +134,7 @@ export default function Home({ isLogin, setIsLogin }) {
                       },
                     })}
                   />
-                  {errors.password && <p>Please enter a valid password</p>}
+                  {errors.password && <ValidPassword/>}
                   {message}
                   <Typography
                     sx={{ textAlign: "center", pt: 2, fontSize: "12px" }}
